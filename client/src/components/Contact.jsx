@@ -4,17 +4,27 @@ import emailjs from '@emailjs/browser';
 const Contact = () => {
     const form = useRef();
     const sendEmail = (e) => {
+
       e.preventDefault();
-      const recaptchaResponse = document.querySelector('.g-recaptcha-response').value;
-      const formData = new FormData(form.current);
-      formData.append('g-recaptcha-response', recaptchaResponse);
-      emailjs.sendForm('service_vjmkwjs', 'template_bzvk80a', formData, '4ofEN82q4311Xmb52')
-        .then((result) => {
-            e.target.reset()
-            console.log(result.text);
-        }, (error) => {
-            console.log(error.text);
-        });
+      
+      const recaptchaResponseElement = document.querySelector('.g-recaptcha-response')
+      if (recaptchaResponseElement && recaptchaResponseElement.value) {
+        const recaptchaResponse = recaptchaResponseElement.value;
+
+        const formData = new FormData(form.current);
+        formData.append('g-recaptcha-response', recaptchaResponse);
+        emailjs.sendForm('service_vjmkwjs', 'template_bzvk80a', formData, '4ofEN82q4311Xmb52')
+          .then((result) => {
+              e.target.reset()
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      } else {
+        console.error('reCAPTCHA not initialized or not checked');
+      }
+
+
     };
 
     return (
@@ -34,11 +44,11 @@ const Contact = () => {
                         <label htmlFor="comment" className="block text-sm font-bold mb-2">Comment</label>
                         <textarea id="comment" rows="4" name="message" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                     </div>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-between mb-6 mr-4">
                     <div className="g-recaptcha" data-sitekey="6LdKL1UpAAAAAL897jqJihXIwpZBGgSMCR18m0OD"></div>
-                        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                            Send Message
-                        </button>
+                    <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Send Message
+                    </button>
                     </div>
                 </form>
             </div>
