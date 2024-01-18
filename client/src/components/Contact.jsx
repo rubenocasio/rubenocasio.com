@@ -5,8 +5,10 @@ const Contact = () => {
     const form = useRef();
     const sendEmail = (e) => {
       e.preventDefault();
-  
-      emailjs.sendForm('service_vjmkwjs', 'template_bzvk80a', form.current, '4ofEN82q4311Xmb52')
+      const recaptchaResponse = document.querySelector('.g-recaptcha-response').value;
+      const formData = new FormData(form.current);
+      formData.append('g-recaptcha-response', recaptchaResponse);
+      emailjs.sendForm('service_vjmkwjs', 'template_bzvk80a', formData, '4ofEN82q4311Xmb52')
         .then((result) => {
             e.target.reset()
             console.log(result.text);
@@ -17,9 +19,8 @@ const Contact = () => {
 
     return (
         <div>
-            <div className="flex items-center justify-center bg-black p-4 py-16" id='contact'>
+            <div className="flex items-center justify-center bg-black p-4 py-16" id='contact'>                                                                      
                 <form ref={form} onSubmit={sendEmail} className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
-                <div class="g-recaptcha" data-sitekey="6LdKL1UpAAAAAL897jqJihXIwpZBGgSMCR18m0OD"></div>
                     <h2 className="text-2xl font-bold mb-6 text-center">Contact Me</h2>
                     <div className="mb-4">
                         <label htmlFor="name" className="block text-sm font-bold mb-2">Name</label>
@@ -34,13 +35,13 @@ const Contact = () => {
                         <textarea id="comment" rows="4" name="message" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                     </div>
                     <div className="flex items-center justify-center">
+                    <div className="g-recaptcha" data-sitekey="6LdKL1UpAAAAAL897jqJihXIwpZBGgSMCR18m0OD"></div>
                         <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                             Send Message
                         </button>
                     </div>
                 </form>
             </div>
-            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         </div>
     )
 }
