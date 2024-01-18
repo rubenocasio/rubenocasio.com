@@ -13,7 +13,8 @@ const Contact = () => {
 
         const formData = new FormData(form.current);
         formData.append('g-recaptcha-response', recaptchaResponse);
-        emailjs.sendForm('service_vjmkwjs', 'template_bzvk80a', formData, '4ofEN82q4311Xmb52')
+
+        emailjs.sendForm('service_vjmkwjs', 'template_bzvk80a', form.current, '4ofEN82q4311Xmb52')
           .then((result) => {
               e.target.reset()
               console.log(result.text);
