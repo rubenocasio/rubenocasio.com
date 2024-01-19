@@ -8,7 +8,7 @@ const Hero = () => {
             <p className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6 text-[#fca911] p-2'>Hi, I'm a</p>
             <div className='md:text-7xl sm:text-6xl text-4xl font-bold md:py-6'>
                 <p className='md:text-5xl sm:text-4xl font-bold'>Full Stack Developer</p>
-                <Typed strings={['Python', 'JavaScript', 'C#', 'Java' ]} typeSpeed={120} backSpeed={140} loop />
+                <Typed strings={['Python', 'JavaScript', 'C#', 'Java' ]} typeSpeed={120} backSpeed={150} loop />
             </div>
             <button className='bg-[#fca911] w-[200px] rounded-md font-medium my-6 mx-auto px-6 py-3 text-black'><a href="#about" className="mx-2 sm:mx-4 hover:text-gray-600">Know More</a></button>
         </div>
