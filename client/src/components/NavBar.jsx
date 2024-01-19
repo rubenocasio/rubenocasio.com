@@ -18,18 +18,16 @@ const NavBar = () => {
             <li className='p-4'><a href="#contact" className="mx-2 sm:mx-4 hover:text-gray-600">Contact</a></li>
         </ul>
         <div onClick={handleNav} className='block md:hidden'>
-            {nav ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
+            {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
-        <div className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-gray-600 ease-in-out duration-500' : 'ease-in-out duration-500 fixed left-[-100%]'}>
+        <ul className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-gray-600 ease-in-out duration-500' : 'ease-in-out duration-500 fixed left-[-100%]'}>
             <h1 className='w-full text-3xl font-bold text-[#FCA311] m-4'>RUBEN OCASIO</h1>
-            <ul className='pt-24 uppercase'>
-                <li className='p-4 border-b border-gray-900'><a href="/" className="mx-2 sm:mx-4 hover:text-gray-600">Home</a></li>
-                <li className='p-4 border-b border-gray-900'><a href="#about" className="mx-2 sm:mx-4 hover:text-gray-600">About</a></li>
-                <li className='p-4 border-b border-gray-900'><a href="#projects" className="mx-2 sm:mx-4 hover:text-gray-600">Projects</a></li>
-                <li className='p-4 border-b border-gray-900'><a href="#tech" className="mx-2 sm:mx-4 hover:text-gray-600">Technology</a></li>
-                <li className='p-4 border-b border-gray-900'><a href="#contact" className="mx-2 sm:mx-4 hover:text-gray-600">Contact</a></li>
-            </ul>
-        </div>
+                <li className='p-4 border-b border-gray-900'><a href="/" onClick={handleNav} className="mx-2 sm:mx-4 hover:text-gray-600">Home</a></li>
+                <li className='p-4 border-b border-gray-900'><a href="#about" onClick={handleNav} className="mx-2 sm:mx-4 hover:text-gray-600">About</a></li>
+                <li className='p-4 border-b border-gray-900'><a href="#projects" onClick={handleNav} className="mx-2 sm:mx-4 hover:text-gray-600">Projects</a></li>
+                <li className='p-4 border-b border-gray-900'><a href="#tech" onClick={handleNav} className="mx-2 sm:mx-4 hover:text-gray-600">Technology</a></li>
+                <li className='p-4 border-b border-gray-900'><a href="#contact" onClick={handleNav} className="mx-2 sm:mx-4 hover:text-gray-600">Contact</a></li>
+        </ul>
     </div>
   )
 }
